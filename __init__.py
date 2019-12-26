@@ -25,9 +25,9 @@ def brewfather_telemetry_task(api):
     now = datetime.datetime.now()
     for key, value in cbpi.cache.get("sensors").iteritems():
         cbpi.app.logger.info(value)
-        if (value.type == "ONE_WIRE_SENSOR"):
+        if (value.instance.type == "ONE_WIRE_SENSOR"):
             data = {}
-            data['name'] = value.instance.sensor_name
+            data['name'] = value.instance.name
             data['temp'] = value.instance.value
             data['aux_temp'] = 0
             data['ext_temp'] = 0
