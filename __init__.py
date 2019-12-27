@@ -27,7 +27,7 @@ def brewfather_telemetry_task(api):
     brew_name = cbpi.get_config_parameter("brew_name", None)
 
     for key, value in cbpi.cache.get("sensors").iteritems():
-        if (value.type == "ONE_WIRE_SENSOR"):
+        if (value.type == "ONE_WIRE_SENSOR" or value.type == "HTTPSensor" ):
             data = {}
             data['name'] = value.name
             data['temp'] = value.instance.last_value
